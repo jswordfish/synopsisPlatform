@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+  	<script src="helloScripts/hello.all.js"></script>
+  	<script src="appScripts/testBookSys.js"></script>
+  	<script>
+  	hello.on('auth.login', function(auth) {
+
+	// Call user information, for the given network
+	hello(auth.network).api('/me').then(function(r) {
+		// Inject it into the container
+		var label = document.getElementById('profile_' + auth.network);
+		if (!label) {
+			label = document.createElement('div');
+			label.id = 'profile_' + auth.network;
+			document.getElementById('profile').appendChild(label);
+		}
+		label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
+	});
+  	</script>
+
+</head>
+<body>
+You are authenticated
+</body>
+</html>

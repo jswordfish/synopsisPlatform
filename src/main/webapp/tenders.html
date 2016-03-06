@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+  	<script src="js/bootstrap.js"></script>
+  	<script src="js/tenderForm.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+  	
+  	<link href="css/vendors.css" rel="stylesheet">
+  	<script language="javascript" type="text/javascript">
+		<!--
+		function popitup(mode) {
+		var x = screen.width/2 - 650/2;
+    	var y = screen.height/2 - 350/2;
+			newwindow=window.open('vendorForm.html',mode,'height=350,width=650,left='+x+',top='+y);
+			if (window.focus) {newwindow.focus()}
+			return false;
+		}
+		
+		// -->
+</script>
+  	</head>
+ <body ng-app="myApp" ng-controller="tendersController"> 	
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+    <a href="#" class="btn btn-primary btn-xs pull-left" ng-click="addTender()"><b>+</b> Add new Tender</a>
+     <a href="#" class="btn btn-primary btn-xs pull-left" onClick="onClick=window.location.href='AdminShortCuts.html'"><b>+</b> Go Back</a>
+      <a href="#" class="btn btn-primary btn-xs pull-right" ng-click="logOff()" > Log Off</a>
+        <tr>
+            <th>Tender Number</th>
+            <th>Tender Start Date</th>
+            <th>Tender End Date</th>
+            <th>Scope of Work</th>
+            <th>Issued By</th>
+            <th>Email</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+            <tr ng-repeat="tender in tenders">
+                <td>{{ tender.tenderUniqueId }}</td>
+                <td>{{ tender.tenderInitiateTime }}</td>
+                <td>{{ tender.tenderSubmissionTime }}</td>
+                <td>{{ tender.scopeOfWork }}</td>
+                <td>{{ tender.tenderIssuedByName }}</td>
+                <td>{{ tender.email }}</td>
+                <td class="text-center">
+                <a class='btn btn-info btn-xs' ng-click="editTender(tender)" href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                <a class="btn btn-danger btn-xs" ng-click="deleteTender(tender)" href="#"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+            </tr>
+            
+    </table>
+    </div>
+</div>
+</body>
+</html>

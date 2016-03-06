@@ -1,0 +1,99 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>Across n Beyond</title>
+	 <head>
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	  
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+		<script src="js/bootstrap.js"></script>
+		<script src="js/reportCompleteAnalysis.js"></script>
+		<link href="css/bootstrap.css" rel="stylesheet">
+
+		<link href="css/bootstrap-social.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		
+		<link href="css/vendors.css" rel="stylesheet">
+		
+		</head>
+	 <body ng-app="myApp" ng-controller="reportCompleteAnalysisController"> 	
+	<div class="container" class="row col-md-36 col-md-offset-0 custyle" align="center">
+	    
+	    
+		
+		 <a href="#" class="btn btn-primary btn-xs pull-center" onClick="onClick=window.location.href='reportTenders.html'"><b>+</b> Go Back</a>
+	  <a href="#" class="btn btn-primary btn-xs pull-right" ng-click="logOff()" > Log Off</a>
+			<div class="row col-md-36 col-md-offset-0 custyle">
+			<h2>Complete Analysis View by for Tender - {{compAnalysisData[0].tenderUniqueNo}}. </h2><br>
+			<h4>All Amounts in INR Currency</h4>
+			  <table class="table table-striped custab">
+			 <thead>
+			<th width="2%">Serial</th>
+			<th width="40%">Item Description</th>
+			    <th width="4%">Unit</th>
+			    <th width="4%">Total Quantity</th>
+			    <th width="4%">Input Rate</th>
+			    <th width="3%">Max / Min Ratio</th>
+			    <th width="3%">Vendor name with Minimum Rate</th>
+			    <th width="3%">Minimum Rate</th>
+			     <th width="3%">Minimum Amount</th>
+			     <th width="3%">Vendor name with Maximum Rate</th>
+			    <th width="3%">Maximum Rate</th>
+			    <th width="3%">Maximum Amount</th>
+			<th  ng-repeat="item in compAnalysisData[0].bidItems">
+				<div>Vendor Name--</div>
+				</div>Vendor Rate--</div>
+				</div>Vendor Amount:Vendor Comment</div>
+				
+				   
+				
+			    
+			 </th>  
+			</thead>
+			<tr ng-repeat="comp in compAnalysisData | orderBy:'serial'">
+				<td width="2%">{{ comp.serial }}</td>
+			<td width="40%">{{ comp.itemDescription }}</td>
+			<td width="4%">{{ comp.unit }}</td>
+			<td width="4%">{{ comp.totalQuantity }}</td>
+			<td width="4%">{{ comp.inputRate }}</td>
+			<td width="3%">{{ comp.maxMinRatio }}</td>
+			<td width="3%">{{ comp.vendorNameWithMinimumRate }}</td>
+			<td width="3%">{{ comp.minimumRate }}</td>
+			<td width="3%">{{ comp.minimumRate * comp.totalQuantity }}</td>
+			
+			<td width="3%">{{ comp.vendorNameWithMaximumRate }}</td>
+			<td width="3%">{{ comp.maximumRate }}</td>
+			<td width="3%">{{ comp.maximumRate * comp.totalQuantity }}</td>
+			
+			
+			<td ng-repeat="item in comp.bidItems">
+				    <u><font color="red">{{item.vendorName}} has quoted-{{item.rate}} to total-{{item.amount}}</font></u> : Comments By Vendor-[{{item.vendorComment}}]
+			    </td>
+		     </tr>
+			</table>
+			</div>
+		
+			<div class="row col-md-18 col-md-offset-0 custyle">
+			<h2>Vendor Aggregate Totals for this Tender </h2><br>
+			<h4>All Amounts in INR Currency</h4>
+			  <table class="table table-striped custab">
+			 <thead>
+			<th ng-repeat="vendorTotalBid in vendorAggregates">
+				<div>Total Amount By - {{vendorTotalBid.vendorName}}</div>
+			</th>
+			</thead>
+			<tr >
+				<td ng-repeat="vendorTotalBid in vendorAggregates"> {{vendorTotalBid.totalAmountQuoted}}</td>
+			</tr>
+			</table>
+			</div>
+		
+	   
+	</div>
+	</body>
+	</html>

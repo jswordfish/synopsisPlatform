@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+  	<script src="js/bootstrap.js"></script>
+  	<script src="js/tenderForm.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+  	
+  	<link href="css/tendorForm.css" rel="stylesheet">
+	
+	<script>
+	
+	
+	function show(comingFrom, whereTo){
+		if(comingFrom ==1){
+			
+			angular.element(document.getElementById('parent')).scope().saveBasicTenderDetails();
+		}
+	
+		if(whereTo == 2){
+			if(!(document.getElementById('tender.tenderUniqueId') == '' || document.getElementById('tender.tenderUniqueId') == null)){
+				angular.element(document.getElementById('parent')).scope().listFileItems();
+			}
+			
+		}
+		
+		if(whereTo == 3){
+			if(!(document.getElementById('tender.tenderUniqueId') == '' || document.getElementById('tender.tenderUniqueId') == null)){
+				angular.element(document.getElementById('parent')).scope().listTenderBidItems();
+			}
+			
+		}
+		
+		if(whereTo == 4){
+			if(!(document.getElementById('tender.tenderUniqueId') == '' || document.getElementById('tender.tenderUniqueId') == null)){
+				angular.element(document.getElementById('parent')).scope().listVendors();
+			}
+			
+		}
+		
+			
+		for(i=1; i<=4; i++){
+		document.getElementById('l'+i).setAttribute('class', '');
+		document.getElementById('tab'+i).setAttribute('class', 'tab-pane');
+		}
+		
+		
+		
+		document.getElementById('l'+whereTo).setAttribute('class', 'active');
+		document.getElementById('tab'+whereTo).setAttribute('class', 'tab-pane active');
+	}
+	
+	function load_home(){
+		//alert('loading');
+		//document.getElementById("bid").innerHTML='<object type="text/html" data="vendorForm.html" ></object>';
+	}
+	
+	</script>
+  	</head>
+ <body> 	
+<div class="container" id="parent" ng-app="myApp" ng-controller="tenderController">
+<a href="#" class="btn btn-primary btn-xs pull-right" ng-click="logOff()" > Log Off</a>
+	<ul class="nav nav-tabs" id="myTab">
+	    <li class="active" id="l1"><a href="#tab1" data-toggle="tab">Basic Information <i class="fa"></i></a></li>
+	    <li id="l2"><a href="#tab2" data-toggle="tab">Tender Package Files<i class="fa"></i></a></li>
+	     <li id="l3"><a href="#tab3" data-toggle="tab">Bill of Quantities <i class="fa"></i></a></li>
+	      <li id="l4"><a href="#tab4" data-toggle="tab">Share with Vendors <i class="fa"></i></a></li>
+	</ul>
+
+<form id="accountForm" method="post" class="form-horizontal">
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1" >
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Tender Unique ID</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" id= "tender.tenderUniqueId" name="tender.tenderUniqueId" ng-model= "tender.tenderUniqueId" readOnly />
+                </div>
+		<label class="col-xs-3 control-label">Scope of Work</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="tender.scopeOfWork" ng-model= "tender.scopeOfWork" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Tender Intiate Time</label>
+                <div class="col-xs-3">
+                    <input type="date" class="form-control" name="tender.tenderInitiateTime" ng-model= "tender.tenderInitiateTime"/>
+                </div>
+				<label class="col-xs-3 control-label">Tender Submission Time	</label>
+                <div class="col-xs-3">
+                    <input type="date" class="form-control" name="tender.tenderSubmissionTime" ng-model= "tender.tenderSubmissionTime" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Issued By</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="tender.tenderIssuedByName" ng-model= "tender.tenderIssuedByCompany"/>
+                </div>
+				<label class="col-xs-3 control-label">Designation of Issuer	</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="tender.tenderIssuedByDesignation" ng-model= "tender.tenderIssuedByDesignation" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Tender Issue Address</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="tender.tenderIssuedAddress" ng-model= "tender.tenderIssuedAddress"/>
+                </div>
+				<label class="col-xs-3 control-label">Email	</label>
+                <div class="col-xs-3">
+                    <input type="email" class="form-control" name="tender.email" ng-model= "tender.email" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Tender Fee</label>
+                <div class="col-xs-3">
+                    <input type="number" class="form-control" name="tender.tenderFree" ng-model= "tender.tenderFree"/>
+                </div>
+				<label class="col-xs-3 control-label">Earnest Money Deposit	</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="tender.earnestMoneyDeposit" ng-model= "tender.earnestMoneyDeposit" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Earnest Money Payment Details</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" name="tender.earnestMoneyPaymentDetails" ng-model= "tender.earnestMoneyPaymentDetails"/>
+                </div>
+                
+                <label class="col-xs-3 control-label">Project</label>
+                <div class="col-xs-3">
+                    <select ng-model="tender.projectName" ng-options="name for name in projectNames">
+			</select>
+                </div>
+				
+            </div>
+            
+           
+	    
+	     <div class="form-group" style="margin-top: 15px;">
+		<div class="col-xs-5 col-xs-offset-3">
+		    <button type="submit" class="btn btn-default"  onClick="show('1', '2')">Save and Proceed</button>
+		   
+		</div>
+	    </div>
+        </div>
+
+        <div class="tab-pane" id="tab2">
+           <div class="row col-md-6 col-md-offset-2 custyle">
+		<table class="table table-striped custab">
+		<thead>
+			
+			<tr>
+			<th>Tender Unique ID</th>
+			    <th>File Name</th>
+			    <th>File URL</th>
+			    <th>File Description</th>
+			     <th class="text-center">Action</th>
+			</tr>
+		</thead>
+		<tr ng-repeat="file in fileItems">
+			<td>{{ file.tenderUniqueId }}</td>
+			<td>{{ file.fileName }}</td>
+			<td><a href="{{ file.fileURL }}">Right Click to Open/Download</a></td>
+			<td>{{ file.description }}</td>
+			<td class="text-center">
+			
+			<a class="btn btn-danger btn-xs" ng-click="deleteFile(file.id)" href="#"><span class="glyphicon glyphicon-remove"></span> Remove File from Tender</a></td>
+		</tr>
+            
+		</table>
+	  </div>
+	  
+	  <div class="row col-md-10 col-md-offset-2 custyle">
+		<div class="form-group">
+			<label class="col-xs-2 control-label">Upload Reference Document</label>
+			 <input type="text" class="col-xs-2" name="individualFileDescription" ng-model= "individualFileDescription" placeholder="File Description" />
+			<div class="col-xs-4">
+			    <input type="file" class="form-control" id="fileButton" name="file"  onchange="angular.element(this).scope().uploadFile(this.files)" ng-model="image" />
+			</div>
+			
+			
+            </div>
+
+            <h4> <b>OR</b></h4>
+	    
+	    <div class="form-group">
+			<label class="col-xs-2 control-label">Add File Link</label>
+			<input type="text" class="col-xs-2" name="fileProperty.description" ng-model= "fileProperty.description" placeholder="File Description" />
+			 <input type="text" class="col-xs-4" name="fileProperty.fileURL" ng-model= "fileProperty.fileURL" placeholder="Enter File URL/Link" />
+			<div class="col-xs-2">
+			    <input type="button" class="form-control" id="addFileLink" name="file"  ng-click="addFileLinkForTender()" value='Add Package File'  />
+			</div>
+			
+			
+            </div>
+	    
+	    
+		 <div class="form-group" style="margin-top: 15px;">
+		<div class="col-xs-5 col-xs-offset-3">
+		    <button type="submit" class="btn btn-default" onClick="show('2', '3')">Proceed (Just for Navigation)</button>
+		     <button type="submit" class="btn btn-default" onClick="show('2', '1')">Previous</button>
+		</div>
+	    </div>
+	  </div>
+        </div>
+	
+	
+	<div class="tab-pane" id="tab3">
+	
+		<div class="row col-md-10 col-md-offset-2 custyle">
+			<table class="table table-striped custab">
+			<thead>
+				
+				<tr>
+				    <th width="4%">Sr.No</th>
+				    <th width="60%">Item Description</th>
+				    <th width="4%">Item Unit</th>
+				    <th width="4%">Quantity Required</th>
+				    <th width="4%">Input Rate</th>
+				     <th width="20%" class="text-center">Action</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="item in tenderBidItems | orderBy:'serial' ">
+				<td width="4%">{{ item.serial }}</td>
+				<td width="60%">{{ item.itemDescription }}</td>
+				<td width="4%">{{ item.unit }}</td>
+				<td width="4%">{{ item.totalQuantity }}</td>
+				<td width="4%">{{ item.inputRate }}</td>
+				
+				<td width="20%" class="text-center">
+				
+				<a class="btn btn-danger btn-xs" ng-click="deleteTenderBidItem(item.id)" href="#"><span class="glyphicon glyphicon-remove"></span> Remove Item</a>
+				<a class="btn btn-info btn-xs" ng-click="updateTenderItem(item)" href="#"><span class="glyphicon glyphicon-remove"></span> Update Item</a></td>
+			</tr>
+		    
+			</table>
+		</div>
+	  
+		
+	  
+		<div class="row col-md-10 col-md-offset-2 custyle">
+			 <div class="form-group">
+				<label class="col-xs-2 control-label">Item Description</label>
+				<div class="col-xs-8">
+				    <textarea cols="25" rows="7" class="form-control"  name="tenderBidItem.itemDescription" ng-model= "tenderBidItem.itemDescription"></textarea>
+				</div>
+						
+			</div>
+			
+			<div class="form-group">
+				<label class="col-xs-1 control-label">Serial	</label>
+				<div class="col-xs-1">
+				    <input type="text" class="form-control" name="tenderBidItem.serial" ng-model= "tenderBidItem.serial" />
+				</div>
+				
+				<label class="col-xs-1 control-label">Unit	</label>
+				<div class="col-xs-1">
+				    <input type="text" class="form-control" name="tenderBidItem.unit" ng-model= "tenderBidItem.unit" />
+				</div>
+				
+				<label class="col-xs-1 control-label">Quantity Required</label>
+				<div class="col-xs-1">
+				    <input type="text" class="form-control" name="tenderBidItem.totalQuantity" ng-model= "tenderBidItem.totalQuantity" />
+				</div>
+				
+				<label class="col-xs-1 control-label">Input Rate</label>
+				<div class="col-xs-1">
+				    <input type="text" class="form-control" name="tenderBidItem.inputRate" ng-model= "tenderBidItem.inputRate" />
+				</div>
+				
+				
+				
+						
+			</div>
+			<div class="col-xs-2">
+				    <button type="submit" class="btn btn-default" ng-click="addTenderBidItem()">Add/Update Item</button>
+				</div>
+		</div>
+		<div class="col-xs-5 col-xs-offset-3">
+		    <button type="submit" class="btn btn-default" onClick="show('3', '4')">Proceed (Just for Navigation)</button>
+		     <button type="submit" class="btn btn-default" onClick="show('3', '2')">Previous</button>
+		</div>
+	
+		
+		
+	</div>
+	
+	<div class="tab-pane" id="tab4">
+	
+		<div class="row col-md-8 col-md-offset-2 custyle">
+			<table class="table table-striped custab">
+			<thead>
+				
+				<tr>
+				    <th>Vendor Name</th>
+				    <th >Vendor Email</th>
+				    <th >Vendor Expertises</th>
+				    <th >Vendor Address</th>
+				  
+				     <th  class="text-center">Select to Share</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="vendor in vendors">
+				<td >{{ vendor.name }}</td>
+				<td >{{ vendor.email }}</td>
+				<td >{{ vendor.expertises }}</td>
+				<td >{{ vendor.address }}</td>
+				
+				<td class="text-center">
+				 <input id="option_1" type="checkbox"   ng-model="vendor.tempCheck"/>
+				</td>
+			</tr>
+		    
+			</table>
+		</div>
+		
+		<div class="col-xs-5 col-xs-offset-3">
+		    <button type="submit" class="btn btn-default" ng-click="shareTender(vendors)">Share and Finish</button>
+		     <button type="submit" class="btn btn-default" onClick="show('4', '3')">Previous</button>
+		</div>
+	</div>
+    </div>
+
+   
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+  	<script src="js/bootstrap.js"></script>
+  	<script src="js/vendorController.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+  	
+  	<link href="css/vendorForm.css" rel="stylesheet">
+	
+	<script>
+		function escapeRegExp(str) {
+	      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+	    }
+	</script>
+  	</head>
+ <body ng-app="myApp" ng-controller="vendorController"> 	
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title">Vendor Creation\Updating Form  </h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form id="form" ng-submit="saveVendor(vendor)">
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			                <input type="text" name="vendor_name" id="vendor_name" ng-model= "vendor.name" class="form-control input-sm" placeholder="Vendor Name" required ng-disabled="disableIt">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="email" name="vendor_email" id="vendor_email" ng-model= "vendor.email" class="form-control input-sm" placeholder="Email">
+			    					</div>
+			    				</div>
+			    			</div>
+
+			    			<div class="form-group">
+			    				<input type="text" name="expertise" id="expertise" ng-model= "vendor.expertises" class="form-control input-sm" placeholder="Expertise (Comma Separated)">
+			    			</div>
+
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="password" name="password" ng-model= "vendor.password" id="password" class="form-control input-sm" placeholder="Password" 
+									pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_confirmation.pattern = this.value;"  required>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm"  
+									pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required >
+			    					</div>
+			    				</div>
+			    			</div>
+			    			
+			    			<div class="form-group">
+			    				<input type="text" name="address" id="address" ng-model= "vendor.address" class="form-control input-sm" placeholder="Address">
+			    			</div>
+						<div class="form-group">
+			    				<input type="submit" value="Create or Update Vendor"  class="btn btn-info btn-block">
+							<input type="button" value="Go Back" ng-click="goBack()" class="btn btn-info btn-block">
+			    			</div>
+			    			
+			    		
+			    		</form>
+					
+					
+					
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

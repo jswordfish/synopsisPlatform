@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+  	<script src="js/bootstrap.js"></script>
+  	<script src="js/projectController.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+  	
+  	<link href="css/vendorForm.css" rel="stylesheet">
+	
+	<script>
+		function escapeRegExp(str) {
+	      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+	    }
+	</script>
+  	</head>
+ <body ng-app="myApp" ng-controller="projectController"> 	
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title">Project Creation\Updating Form  </h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form id="form" ng-submit="saveProject(project)">
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			                <input type="text" name="project_name" id="project_name" ng-model= "project.projectName" class="form-control input-sm" placeholder="Project Name"  required ng-disabled="disableIt">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="text" name="clientOrDeveloper" id="clientOrDeveloper" ng-model= "project.clientOrDeveloper" class="form-control input-sm" placeholder="Client or Developer">
+			    					</div>
+			    				</div>
+			    				
+			    			</div>
+
+			    			<div class="form-group">
+			    				<input type="text" name="address" id="address" ng-model= "project.address" class="form-control input-sm" placeholder="Project Address">
+			    			</div>
+							<div class="form-group">
+			    				<input type="text" name="developerAddress" id="developerAddress" ng-model= "project.developerAddress" class="form-control input-sm" placeholder="Developer Address">
+			    			</div>
+			    			
+			    			<div class="row">
+			    				<div class="col-xs-4 col-sm-4 col-md-4">
+			    					<div class="form-group">
+			    						<input type="text" name="phoneNo1" id="phoneNo1" ng-model= "project.phoneNo1" class="form-control input-sm" placeholder="Phone 1">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-4 col-sm-4 col-md-4">
+			    					<div class="form-group">
+			                <input type="text" name="phoneNo2" id="phoneNo2" ng-model= "project.phoneNo2" class="form-control input-sm" placeholder="Phone 2">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-4 col-sm-4 col-md-4">
+			    					<div class="form-group">
+			    						<input type="text" name="phoneNo3" id="phoneNo3" ng-model= "project.phoneNo3" class="form-control input-sm" placeholder="Phone 3">
+			    					</div>
+			    				</div>
+			    				
+			    			</div>
+			    			
+						<div class="form-group">
+			    				<input type="submit" value="Create or Update Project"  class="btn btn-info btn-block">
+							<input type="button" value="Go Back" ng-click="goBack()" class="btn btn-info btn-block">
+			    			</div>
+			    			
+			    		
+			    		</form>
+					
+					
+					
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+  	<script src="js/bootstrap.js"></script>
+  	<script src="js/vendorBidPage.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+  	
+  	<link href="css/vendors.css" rel="stylesheet">
+  	<script language="javascript" type="text/javascript">
+		
+</script>
+  	</head>
+ <body ng-app="myApp" ng-controller="bidController"> 	
+<div class="container">
+    <div class="row col-md-18 col-md-offset-0 custyle" align="center">
+    <table class="table table-striped custab" width="700">
+    <thead>
+
+     <a href="#" class="btn btn-primary btn-xs pull-left" onClick="onClick=window.location.href='VendorLandingPage.html'"><b>+</b> Go Back</a>
+      <a href="#" class="btn btn-primary btn-xs pull-right" ng-click="logOff()" > Log Off</a>
+        <tr>
+	    <th width="2%">serial</th>
+            <th width="57%">Item Description</th>
+            <th width="3%">Unit</th>
+            <th width="3%">Total Quantity Required</th>
+            <th width="3%">Rate</th>
+            <th width="3%">Total Amount</th>
+            <th width="25%">Item Description</th>
+            <th width="4%" class="text-center"></th>
+        </tr>
+    </thead>
+            <tr ng-repeat="item in bidItems  | orderBy:'serial'">
+	    <td width="2%">{{item.serial}}</td>
+		<td width="57%">{{item.itemDescription}}</td>
+                <td  width="3%">{{item.unit}}</td>
+               <td  width="3%">{{item.totalQuantity}}</td>
+               <td  width="3%"><input type="text"  id="item.rate" name="item.rate" ng-model= "item.rate" ng-change="calculateTotalAmount(item)" /></td>
+               <td  width="3%">{{item.amount}}</td>
+               <td  width="25%"><textarea cols="25" rows="7" class="form-control"  name="item.vendorComment" ng-model= "item.vendorComment"></textarea>
+	       
+	       
+	       
+	        <td width="4%" class="text-center">
+                <a class='btn btn-info btn-xs' ng-click="updateBidItem(item)" href="#"><span class="glyphicon glyphicon-edit"></span>Save</a> 
+		</td>
+               
+               
+            </tr>
+            
+    </table>
+    </div>
+</div>
+</body>
+</html>

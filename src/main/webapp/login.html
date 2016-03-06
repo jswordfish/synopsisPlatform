@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+  	<script src="js/bootstrap.js"></script>
+	<script src="js/loginController.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/testLogin.css" rel="stylesheet">
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+ <body> 	
+<div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        Across n Beyond- Logo
+    </a>
+  </div>
+  <div class="navbar-collapse collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Sign Up</a></li>
+      <li><button type="button" class="btn btn-primary" onclick="window.location.href='AdminShortCuts.html'">Log in</button></li>
+    </ul>
+  </div>
+</div>
+
+<div id="fullscreen_bg" class="fullscreen_bg"/>
+
+<div class="container" ng-app="myApp" ng-controller="loginController">
+<br><br><br><br>
+	<form class="form-signin" ng-submit="login(email, password)">
+		
+		<input type="text" class="form-control" placeholder="Email address" required="" autofocus="" ng-model="email" >
+		<input type="password" class="form-control" placeholder="Password" required=""  ng-model="password">
+		<button class="btn btn-lg btn-primary btn-block" type="submit" >
+			Sign In
+		</button>
+	</form>
+
+</div>
+
+</body>
+</html>

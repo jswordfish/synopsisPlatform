@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Across n Beyond</title>
+ <head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.js"></script>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+  	<script src="js/bootstrap.js"></script>
+  	<script src="js/reportTendersBid.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+  	<link href="css/bootstrap-social.css" rel="stylesheet">
+  	<link href="css/font-awesome.css" rel="stylesheet">
+  	
+  	<link href="css/vendors.css" rel="stylesheet">
+  	
+  	</head>
+ <body ng-app="myApp" ng-controller="reportTenderVendorsBidController"> 	
+<div class="container" class="row col-md-16 col-md-offset-0 custyle" align="center">
+    
+    
+	
+	 <a href="#" class="btn btn-primary btn-xs pull-center" onClick="onClick=window.location.href='reportTenders.html'"><b>+</b> Go Back</a>
+    <a href="#" class="btn btn-primary btn-xs pull-right" ng-click="logOff()" > Log Off</a>
+    <h2> {{noBidsMsg}}</h2>
+	<div ng-repeat="vendorBid in allVenderBids">
+		<div class="row col-md-18 col-md-offset-0 custyle">
+		<h2>Quote/Bid by {{vendorBid.vendorName}} for Tender - {{tenderUniqueNo}}</h2>
+		  <table class="table table-striped custab">
+    		<thead>
+    			<th width="2%">Serial</th>
+	    		<th width="48%">Item Description</th>
+	            <th width="4%">Unit</th>
+	            <th width="4%">Total Quantity</th>
+	            <th width="4%">Rate</th>
+	            <th width="4%">Total Amount</th>
+		    <th width="34%">Vendor Comment</th>
+    		</thead>
+    		<tr ng-repeat="item in vendorBid.bidItems | orderBy:'serial'">
+    			<td width="2%">{{ item.serial }}</td>
+                <td width="50%">{{ item.itemDescription }}</td>
+                <td width="4%">{{ item.unit }}</td>
+                <td width="4%">{{ item.totalQuantity }}</td>
+                <td width="4%">{{ item.rate }}</td>
+		<td width="4%">{{ item.amount }}</td>
+                <td width="34%">{{ item.vendorComment }}</td>
+             </tr>
+		</div>
+	
+	</div>
+	
+   
+</div>
+</body>
+</html>
